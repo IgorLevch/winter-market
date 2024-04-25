@@ -9,7 +9,7 @@ public class WinterMarketApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WinterMarketApplication.class, args);
 
-		
+			
 	}
 
 }
