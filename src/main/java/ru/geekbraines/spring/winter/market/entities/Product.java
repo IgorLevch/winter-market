@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Product {
 
 
-    @Id
+    @jakarta.persistence.Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
