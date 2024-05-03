@@ -2,11 +2,10 @@ package ru.geekbraines.spring.winter.market.entities;
 
 import org.springframework.data.annotation.Id;
 
-import jakarta.persistence.*;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+// import jakarta.persistence.*;
+// import jakarta.persistence.Table;
+
+import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Product {
 
 
-    @jakarta.persistence.Id
+    @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;

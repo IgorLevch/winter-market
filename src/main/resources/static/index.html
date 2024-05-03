@@ -28,6 +28,12 @@
 <!-- это выше мы связали вместе файлы js  и html : все, что назодится в этом диве управляется контроллером, который называется indexController   -->
 
    <!-- <div class="container"> -->
+
+    
+
+
+
+
     <h1>Market</h1>  
     
     {{productsList}}
@@ -41,6 +47,7 @@
             <td>ID</td> 
             <td>title</td>
             <td>price</td>
+            <td></td>
           
         </tr>   
         <tbody>     
@@ -48,6 +55,11 @@
                 <td>{{p.id}}</td>    <!-- {{}}  - означает обращение к полю id объекта p; две фигурные скобки на это указывают-->
                 <td>{{p.title}}</td>    <!--  ng-repeat  - это цикл foreach в ангуляре--> 
                 <td>{{p.price}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" ng-click="showProductInfo(p.id)">Info</button> 
+                    <button type="button" class="btn btn-danger" ng-click="deleteProductById(p.id)">Delete</button>  
+                     <!-- ng-click -- это listener -->
+                </td>
             </tr> 
 
 <!-- 

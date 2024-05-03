@@ -1,6 +1,7 @@
 package ru.geekbraines.spring.winter.market.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,16 @@ public class ProductService {
 
         return productRepository.findAll();
     }
+
+    public Optional<Product> findById(Long id) {
+        return productRepository.findById(id);
+    }
+
+    public void deleteById(Long id){
+        productRepository.deleteById(id);
+
+    }
+
 
 
 }
