@@ -22,6 +22,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 @Slf4j                                         
 public class SecurityConfig extends WebSecurityConfigurerAdapter{ 
+
+    private final JwtRequestFilter jwtRequestFilter;
     
 
     @Override
@@ -41,8 +43,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
             // если польз-ль пытается зайти в какую-то защищенную область как гость, то ему вернется статус 401 (не авторизован)
      
-    }
+            http.addFilterBefore(jwtRequestFilter,UsernamePasswordAuthenticationFilter.class);    
     
+    }
+
     
     @Bean        
     public BCryptPasswordEncoder  passwordEncoder() {   

@@ -1,4 +1,4 @@
-package ru.geekbraines.spring.utils;
+package ru.geekbraines.spring.winter.market.utils;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;

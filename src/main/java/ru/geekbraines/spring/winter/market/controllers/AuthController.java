@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import ru.geekbraines.spring.utils.JwtTokenUtil;
 import ru.geekbraines.spring.winter.market.dtos.JwtRequest;
 import ru.geekbraines.spring.winter.market.dtos.JwtResponse;
 import ru.geekbraines.spring.winter.market.services.UserService;
+import ru.geekbraines.spring.winter.market.utils.JwtTokenUtil;
 
 @RestController
 @RequiredArgsConstructor
