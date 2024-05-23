@@ -2,15 +2,23 @@ package ru.geekbraines.spring.winter.market.entities;
 
 import java.util.Collection;
 
-//import jakarta.persistence.*;
-import javax.persistence.*;
+import jakarta.persistence.*;
+//import javax.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 ;
 
 @Entity
 @Data
 @Table(name = "users")
+//@NoArgsConstructor
 public class User {
+
+    
+
+    public User() {
+    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
