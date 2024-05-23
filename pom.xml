@@ -5,11 +5,10 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.5</version>
+		 <version>3.2.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	
-	<groupId>ru.geekbraines.spring</groupId>
+	<groupId>ru.geekbrains.winter</groupId>
 	<artifactId>winter-market</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>winter-market</name>
@@ -24,12 +23,18 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
+	<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
+
 
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -46,6 +51,24 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+
+		
+	
+		
+
+
+
 	</dependencies>
 
 	<build>
@@ -64,5 +87,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
