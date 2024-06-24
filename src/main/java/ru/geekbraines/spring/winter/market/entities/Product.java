@@ -1,24 +1,37 @@
 package ru.geekbraines.spring.winter.market.entities;
 
-import org.springframework.data.annotation.Id;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 
 import jakarta.persistence.*;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Entity
+
+import java.time.LocalDateTime;
+
+
+
 @Data
+@Entity
 @Table(name="products")
-@NoArgsConstructor
+//@NoArgsConstructor
 public class Product {
+    
+
+    public Product() {
+    }
+    
+
+    public Product(Long id, String title, int price) {
+        this.id = id;
+        this.title = title;
+        this.price = price;
+    }
 
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
 
@@ -28,7 +41,21 @@ public class Product {
     @Column(name="price")
     private int price;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 
+    @CreationTimestamp    // это хибернейтовская аннотация/ фиксирует время создания
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp    // это хибернейтовская аннотация / хибернейт обновляет объект текущим временем при апдете
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+   
+
+    
 
 }
