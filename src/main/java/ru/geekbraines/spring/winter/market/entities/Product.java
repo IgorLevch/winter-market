@@ -6,7 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 import java.time.LocalDateTime;
 
@@ -40,6 +40,10 @@ public class Product {
 
     @Column(name="price")
     private int price;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 
     @CreationTimestamp    // это хибернейтовская аннотация/ фиксирует время создания

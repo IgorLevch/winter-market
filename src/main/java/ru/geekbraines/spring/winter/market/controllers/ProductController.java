@@ -3,6 +3,7 @@ package ru.geekbraines.spring.winter.market.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import ru.geekbraines.spring.winter.market.converters.ProductConverter;
 import ru.geekbraines.spring.winter.market.dtos.ProductDto;
 import ru.geekbraines.spring.winter.market.entities.Product;
 import ru.geekbraines.spring.winter.market.exceptions.AppError;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,11 +33,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductController {
 
     private final ProductService productService;
+     private final ProductConverter productConverter;
+
 
     @GetMapping
     public List<ProductDto> findAllProducts(){
 
-        return productService.findAll().stream().map(p -> new ProductDto(p.getId(), p.getTitle(),p.getPrice()))
+        return productService.findAll().stream().map(productConverter::entityToDto)
         .collect(Collectors.toList());
     }
 
@@ -69,7 +74,7 @@ public class ProductController {
 
         Product p = productService.findById(id).orElseThrow(()-> 
         new ResourceNotFoundException("product not found, id: " +id));
-        return new ProductDto(p.getId(),p.getTitle(),p.getPrice());
+        return productConverter.entityToDto(p);
         
 
     }
@@ -92,7 +97,12 @@ public class ProductController {
     // // и вернем клиенту   
 
 
+    @PostMapping
+    public  ProductDto createNewProduct(@RequestBody ProductDto productDto){
+        Product product = productService.createNewProduct(productDto);
+        return productConverter.entityToDto(product);
 
+    }
 
 
 

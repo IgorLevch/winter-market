@@ -6,7 +6,10 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
+import ru.geekbraines.spring.winter.market.dtos.ProductDto;
+import ru.geekbraines.spring.winter.market.entities.Category;
 import ru.geekbraines.spring.winter.market.entities.Product;
+import ru.geekbraines.spring.winter.market.exceptions.ResourceNotFoundException;
 import ru.geekbraines.spring.winter.market.repositories.ProductRepository;
 
 @Service
@@ -14,6 +17,7 @@ import ru.geekbraines.spring.winter.market.repositories.ProductRepository;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final CategoryService categoryService;
 
 
     public List<Product>  findAll(){
@@ -29,6 +33,21 @@ public class ProductService {
         productRepository.deleteById(id);
 
     }
+
+
+    public Product createNewProduct(ProductDto productDto){
+        Product product = new Product();
+        product.setPrice(productDto.getPrice());
+        product.setTitle(product.getTitle());
+
+        Category category = categoryService.findByTitle(productDto.getCategoryTitle()).orElseThrow(() ->
+                new ResourceNotFoundException("Category not found"));
+        product.setCategory(category);
+        productRepository.save(product);
+
+        return product;
+    }
+
 
 
 
