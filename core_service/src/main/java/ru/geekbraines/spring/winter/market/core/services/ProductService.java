@@ -6,10 +6,10 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import ru.geekbraines.spring.winter.market.core.dtos.ProductDto;
+import ru.geekbraines.spring.winter.market.api.ProductDto;
+import ru.geekbraines.spring.winter.market.api.ResourceNotFoundException;
 import ru.geekbraines.spring.winter.market.core.entities.Category;
 import ru.geekbraines.spring.winter.market.core.entities.Product;
-import ru.geekbraines.spring.winter.market.core.exceptions.ResourceNotFoundException;
 import ru.geekbraines.spring.winter.market.core.repositories.ProductRepository;
 
 @Service

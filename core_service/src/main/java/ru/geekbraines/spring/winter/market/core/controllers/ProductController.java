@@ -3,11 +3,11 @@ package ru.geekbraines.spring.winter.market.core.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import ru.geekbraines.spring.winter.market.api.AppError;
+import ru.geekbraines.spring.winter.market.api.ProductDto;
+import ru.geekbraines.spring.winter.market.api.ResourceNotFoundException;
 import ru.geekbraines.spring.winter.market.core.converters.ProductConverter;
-import ru.geekbraines.spring.winter.market.core.dtos.ProductDto;
 import ru.geekbraines.spring.winter.market.core.entities.Product;
-import ru.geekbraines.spring.winter.market.core.exceptions.AppError;
-import ru.geekbraines.spring.winter.market.core.exceptions.ResourceNotFoundException;
 import ru.geekbraines.spring.winter.market.core.services.ProductService;
 
 import java.util.List;

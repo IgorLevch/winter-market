@@ -1,11 +1,12 @@
-package ru.geekbraines.spring.winter.market.core.dtos;
+package ru.geekbraines.spring.winter.market.carts.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import lombok.Data;
-import ru.geekbraines.spring.winter.market.core.entities.Product;
+import ru.geekbraines.spring.winter.market.api.ProductDto;
+
 
 @Data
 public class Cart {
@@ -31,7 +32,7 @@ public Cart() {
 
 
 // добавление продуктов в корзину: 
-   public void add(Product product){ // TODO доработать в ДЗ
+   public void add(ProductDto product){ // TODO доработать в ДЗ
         items.add(new CartItem(product.getId(), product.getTitle(), 1, product.getPrice(), product.getPrice()));
         recalculate();
    }

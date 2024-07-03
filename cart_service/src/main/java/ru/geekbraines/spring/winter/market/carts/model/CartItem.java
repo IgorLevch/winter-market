@@ -1,4 +1,4 @@
-package ru.geekbraines.spring.winter.market.core.dtos;
+package ru.geekbraines.spring.winter.market.carts.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

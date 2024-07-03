@@ -1,4 +1,4 @@
-package ru.geekbraines.spring.winter.market.core.exceptions;
+package ru.geekbraines.spring.winter.market.api;
 
 public class AppError {
 

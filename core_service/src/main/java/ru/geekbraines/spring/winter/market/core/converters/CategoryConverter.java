@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
-import ru.geekbraines.spring.winter.market.core.dtos.CategoryDto;
+import ru.geekbraines.spring.winter.market.api.CategoryDto;
 import ru.geekbraines.spring.winter.market.core.entities.Category;
 
 @Component

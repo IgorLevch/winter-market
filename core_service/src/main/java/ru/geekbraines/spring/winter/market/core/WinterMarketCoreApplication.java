@@ -1,4 +1,4 @@
-package ru.geekbraines.spring.winter.market;
+package ru.geekbraines.spring.winter.market.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

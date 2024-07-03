@@ -1,4 +1,4 @@
-package ru.geekbraines.spring.winter.market.core.exceptions;
+package ru.geekbraines.spring.winter.market.carts.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

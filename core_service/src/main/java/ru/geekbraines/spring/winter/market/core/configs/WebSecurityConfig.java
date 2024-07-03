@@ -44,6 +44,8 @@ public class WebSecurityConfig {
     //         .csrf().disable()// для Рестовой связи выключаем цсрф-токены
     //         .cors().disable()
     //         .authorizeRequests()
+    //         .antMatchers("/auth_check").authenticated()   
+    //         .antMatchers("/api/v1/orders").authenticated()  -- запрещено ходить в заказы неаутентифицированным польз-лям   
     //         .anyRequest().permitAll() // пока ко всем енд-пойнтам даем доступ 
     //         .and()
     //         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Сессия не используется (т.к. РЕСт, то выключаем сесссии) 

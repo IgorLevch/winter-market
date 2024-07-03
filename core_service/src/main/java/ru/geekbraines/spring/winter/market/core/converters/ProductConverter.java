@@ -3,10 +3,10 @@ package ru.geekbraines.spring.winter.market.core.converters;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
-import ru.geekbraines.spring.winter.market.core.dtos.ProductDto;
+import ru.geekbraines.spring.winter.market.api.ProductDto;
+import ru.geekbraines.spring.winter.market.api.ResourceNotFoundException;
 import ru.geekbraines.spring.winter.market.core.entities.Category;
 import ru.geekbraines.spring.winter.market.core.entities.Product;
-import ru.geekbraines.spring.winter.market.core.exceptions.ResourceNotFoundException;
 import ru.geekbraines.spring.winter.market.core.services.CategoryService;
 
 @Component
