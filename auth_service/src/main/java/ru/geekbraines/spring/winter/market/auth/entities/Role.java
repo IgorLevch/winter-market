@@ -1,4 +1,4 @@
-package ru.geekbraines.spring.winter.market.core.entities;
+package ru.geekbraines.spring.winter.market.auth.entities;
 
 import jakarta.persistence.*;
 

@@ -12,6 +12,7 @@ import ru.geekbraines.spring.winter.market.carts.integrations.ProductServiceInte
 import ru.geekbraines.spring.winter.market.carts.model.Cart;
 
 
+
 @Service
 @RequiredArgsConstructor
 public class CartService {
@@ -31,8 +32,7 @@ public class CartService {
     } // этот метод в будущем модифицируем и распишем в будущем, какую кому корзину будем выдавать 
 
     public void add(Long productId){
-     ProductDto product = productServiceIntegration.getProductById(productId).orElseThrow(()-> 
-     new ResourceNotFoundException("We can't find product with id = " + productId +"to a Cart. Product not found"));
+     ProductDto product = productServiceIntegration.getProductById(productId);
         tempCart.add(product);
 
     }

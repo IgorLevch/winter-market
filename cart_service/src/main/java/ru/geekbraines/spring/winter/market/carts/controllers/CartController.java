@@ -16,7 +16,7 @@ import ru.geekbraines.spring.winter.market.carts.services.CartService;
 @RestController
 @RequestMapping("/api/v1/cart")
 @RequiredArgsConstructor
-@CrossOrigin("*")  
+//@CrossOrigin("*") т.к. за это теперь отвечает Гейтвей -- комментим  
 public class CartController {
 
     // пока мы в микросервисах не настраиваем безопасность

@@ -13,7 +13,7 @@ import ru.geekbraines.spring.winter.market.api.ResourceNotFoundException;
 
 import ru.geekbraines.spring.winter.market.core.entities.Order;
 import ru.geekbraines.spring.winter.market.core.entities.OrderItem;
-import ru.geekbraines.spring.winter.market.core.entities.User;
+import ru.geekbraines.spring.winter.market.core.integrations.CartServiceIntegration;
 import ru.geekbraines.spring.winter.market.core.repositories.OrderItemRepository;
 import ru.geekbraines.spring.winter.market.core.repositories.OrderRepository;
 
@@ -23,17 +23,17 @@ import ru.geekbraines.spring.winter.market.core.repositories.OrderRepository;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final OrderItemRepository orderItemRepository;
     private final ProductService productService;
+    private final CartServiceIntegration cartServiceIntegration;
 
    
     @Transactional
-    public void createOrder(User user){
+    public void createOrder(String username){
 
    
-    CartDto cartDto = null; // cartServiceIntegration.getCurrentCart(); получаем корзину из Карт МС
+    CartDto cartDto = cartServiceIntegration.getCurrentCart();// получаем корзину из Карт МС
     Order order = new Order();
-    order.setUser(user);
+    order.setUsername(username);
     order.setTotalPrice(cartDto.getTotalPrice()); 
     order.setItems(cartDto.getItems().stream().map(
         cartItem -> new OrderItem(
@@ -49,7 +49,7 @@ public class OrderService {
 
 
     orderRepository.save(order);
-        // cartServiceIntegration.clear();
+         cartServiceIntegration.clear();
                                
     // List<OrderItem> orderItems = cart.getItems().stream()
     //             .map(cartItem -> {

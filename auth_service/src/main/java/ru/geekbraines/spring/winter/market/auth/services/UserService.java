@@ -1,4 +1,4 @@
-package ru.geekbraines.spring.winter.market.core.services;
+package ru.geekbraines.spring.winter.market.auth.services;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -12,9 +12,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import ru.geekbraines.spring.winter.market.core.entities.Role;
-import ru.geekbraines.spring.winter.market.core.entities.User;
-import ru.geekbraines.spring.winter.market.core.repositories.UserRepository;
+import ru.geekbraines.spring.winter.market.auth.entities.Role;
+import ru.geekbraines.spring.winter.market.auth.entities.User;
+import ru.geekbraines.spring.winter.market.auth.repositories.UserRepository;
 
 @Service
 @RequiredArgsConstructor

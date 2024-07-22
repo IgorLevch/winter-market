@@ -1,4 +1,4 @@
-package ru.geekbraines.spring.winter.market.core.entities;
+package ru.geekbraines.spring.winter.market.auth.entities;
 
 import java.util.Collection;
 
@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 //import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 ;
 
 @Entity

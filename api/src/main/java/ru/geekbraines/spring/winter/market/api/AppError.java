@@ -2,8 +2,14 @@ package ru.geekbraines.spring.winter.market.api;
 
 public class AppError {
 
+    // данный класс означает, что все микросервсы будут ругаться одной и той же «оберткой» над ошибками :
+    // в обертке будет статус-код и сообщение 
+
     private int statusCode; // например 400 или 404
     private String message; // сообщение, которое укажет, что пошло не так
+
+
+    
     public int getStatusCode() {
         return statusCode;
     }

@@ -1,4 +1,4 @@
-package ru.geekbraines.spring.winter.market.core.utils;
+package ru.geekbraines.spring.winter.market.auth.utils;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,7 +28,7 @@ public class JwtTokenUtil { // класс, который полностью б�
     @Value("${jwt.lifetime}")
     private Integer jwtLifetime;  // время жизни токена 
 
-    public String generateToken(UserDetails userDetails) {
+    public String generateToken(UserDetails userDetails) { // формируем токен
         Map<String, Object> claims = new HashMap<>();  // некие полезные данные, которые мы хотим зашить в токен дополнтильено 
         List<String> rolesList = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
@@ -50,26 +50,29 @@ public class JwtTokenUtil { // класс, который полностью б�
     // ниже идут методы для парсинга токена (вывтаскиваем полезную инфо из него, когда он нам придет): 
 
 
-    // методом  getAllClaimsFromToken вытаскиваем все данные из токена 
-    //  а у результата запрашиваем имя пользователя (getSubject())
-    public String getUsernameFromToken(String token) {
-        return getAllClaimsFromToken(token).getSubject();
-    }
+    // // // методом  getAllClaimsFromToken вытаскиваем все данные из токена 
+    // // //  а у результата запрашиваем имя пользователя (getSubject())
+    // public String getUsernameFromToken(String token) {
+    //     return getAllClaimsFromToken(token).getSubject();
+    // }
 
-    // методом  getAllClaimsFromToken вытаскиваем все данные из токена 
-    //  а у результата запрашиваем роли get("roles", List.class)
-    public List<String> getRoles(String token) {
-        return getAllClaimsFromToken(token).get("roles", List.class);
-    }
-
-
-    // основной метод для парсинга токена (из токена достаем пейлоад): 
-    private Claims getAllClaimsFromToken(String token) {
-        return Jwts.parser()  // создается парсер 
-                .setSigningKey(secret) // ему отдается ключ
-                .parseClaimsJws(token)  // ему отадется токен, чтобы он сделал, собственно, парсинг 
-                .getBody();
-    }
+    // // методом  getAllClaimsFromToken вытаскиваем все данные из токена 
+    // //  а у результата запрашиваем роли get("roles", List.class)
+    // public List<String> getRoles(String token) {
+    //     return getAllClaimsFromToken(token).get("roles", List.class);
+    // }
 
 
-}
+    // // основной метод для парсинга токена (из токена достаем пейлоад): 
+    // private Claims getAllClaimsFromToken(String token) {
+    //     return Jwts.parser()  // создается парсер 
+    //             .setSigningKey(secret) // ему отдается ключ
+    //             .parseClaimsJws(token)  // ему отадется токен, чтобы он сделал, собственно, парсинг 
+    //             .getBody();
+    // }
+
+
+
+//  т.к. сервер авторизации не проверяет польз-ля (его проверяет гейтвей), то логика парсинга токена нам тут не нужна, 
+//  здесь нужна только логика формирования токена . ПОэтому я закомментировал 3 выше метода. 
+ }

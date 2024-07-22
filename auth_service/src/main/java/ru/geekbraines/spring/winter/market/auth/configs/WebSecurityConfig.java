@@ -1,4 +1,4 @@
-package ru.geekbraines.spring.winter.market.core.configs;
+package ru.geekbraines.spring.winter.market.auth.configs;
 
 
 
@@ -24,7 +24,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-
+// данный класс занимается тем, что проверяет логин-парль польз-ля, и если все ок, то формирует польз-лю токен 
 
 
 
@@ -41,8 +41,8 @@ public class WebSecurityConfig {
     // protected void configure(HttpSecurity http) throws Exception {
 
     //     http
-    //         .csrf().disable()// для Рестовой связи выключаем цсрф-токены
-    //         .cors().disable()
+    //         .csrf().disable()// для Рестовой связи выключаем цсрф-токены (у нас нет таймлифа)
+    //         .cors().disable() // корс выключаем, потому что он на гейтвей настроен и защита с др. серверов нам здесь не нужна  
     //         .authorizeRequests()
     //         .antMatchers("/auth_check").authenticated()   
     //         .antMatchers("/api/v1/orders").authenticated()  -- запрещено ходить в заказы неаутентифицированным польз-лям   
@@ -97,6 +97,7 @@ public class WebSecurityConfig {
     @Bean        
     public BCryptPasswordEncoder  passwordEncoder() {   
         return new BCryptPasswordEncoder();
+        // конфигурируется стандартный Пассворд Енкодер, чтобы получив пароль, он бы перегнал его в БКрипт  
     }    
 
     @Bean
@@ -118,7 +119,7 @@ public class WebSecurityConfig {
     //     return super.authenticationManagerBean();
     // }
   //  создали дефолтного authenticationManager  -- это который был изначально, по старому СпрингБуту
-
+    // это простейший Аутентификейшн Менджер , чтобы получив пару логин-пароль , он бы сказал -- есть такой юзер или его нет 
 
 
 }

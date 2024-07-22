@@ -1,4 +1,4 @@
-package ru.geekbraines.spring.winter.market.carts.integrations;
+package ru.geekbraines.spring.winter.market.core.integrations;
 
 import java.util.Optional;
 
@@ -8,18 +8,17 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import lombok.RequiredArgsConstructor;
-import reactor.core.publisher.Mono;
 import ru.geekbraines.spring.winter.market.api.CartDto;
 import ru.geekbraines.spring.winter.market.api.ProductDto;
 import ru.geekbraines.spring.winter.market.api.ResourceNotFoundException;
 
 @Component
 @RequiredArgsConstructor
-public class ProductServiceIntegration {
+public class CartServiceIntegration {
     // Cart microservice спокойно работает с core microservice через данный слой
 
    // private final RestTemplate restTemplate; после создания WebClient , он нам не нужен 
-   private final WebClient productServiceWebClient;
+   private final WebClient cartServiceWebClient;
 
     // public Optional<ProductDto> getProductById(Long id){
 
@@ -32,17 +31,13 @@ public class ProductServiceIntegration {
     // }          этот метод работал через restTemplate. 
 
 
-    public ProductDto getProductById(Long id){
+    public CartDto getCurrentCart(){
 
-          return productServiceWebClient.get()
-                .uri("api/v1/products/" +id)
+          return cartServiceWebClient.get()
+                .uri("api/v1/cart")
                 // все, что идет до retrieve - конфигурирование нашего запроса (можем тело насторить, хедеры добавить, куки добавить и т.д.)
                 .retrieve()  //отправляем запрос и хотим получить ответ                 
-                .onStatus( // обрабатываем ситуацию, если кинут 404, например 
-                    httpStatus->httpStatus.value() == HttpStatus.NOT_FOUND.value(), // // если такая ошибка, то кидаем Exceptiion 
-                    clientResponse -> Mono.error(new ResourceNotFoundException(" Товар не найден в продкутовом МС"))
-                )
-                .bodyToMono(ProductDto.class) //если не пришло никаких непонятных объектов (см. onStatus), то мы преобразуем тело ответа к классу 
+                .bodyToMono(CartDto.class) //если не пришло никаких непонятных объектов (см. onStatus), то мы преобразуем тело ответа к классу 
                 // в скобках (к классу ProductDto)
                 .block();   // включит синхронный режим работы (я дожидаюсь, когда мне ответ придет ) 
                 // Слово Mono означает , что придет когда-то ответ. но неизвестно когда (асинхронность) -- и мы как бы на него вешаем Callback
@@ -55,18 +50,17 @@ public class ProductServiceIntegration {
 
 
 
+    public void clear(){
+        cartServiceWebClient.get()  //   мы посылаем гет запрос 
+                .uri("/api/v1/cart/delete") // ендпойнт к нашему uri
+                .retrieve()  // вернет асинхронный вариант 
+                .toBodilessEntity() //это просто дождаться ответа без тела (если мы знаем, что в ответе не будет никакого текста или важной инфо)
+              //    это противоположность .bodyToMono
+                .block(); // включит синхронный режим работы (я дожидаюсь, когда мне ответ придет ) 
+
+    }
+    
     // Ниже для примеров :
-    // public void clearUserCart(String username){
-    //     productServiceWebClient.get()  //   мы посылаем гет запрос 
-    //             .uri("/api/v1/cart/0/delete") // ендпойнт к нашему uri
-    //             .header("username", username)  // это если хотим добавить хедер 
-    //             .retrieve()  // вернет асинхронный вариант 
-    //             .toBodilessEntity() //это просто дождаться ответа без тела (если мы знаем, что в ответе не будет никакого текста или важной инфо)
-    //               это противоположность .bodyToMono
-    //             .block(); // включит синхронный режим работы (я дожидаюсь, когда мне ответ придет ) 
-
-    // }
-
     // public CartDto getUserCart(String username){
 
     //     CartDto cart = productServiceWebClient.get()
