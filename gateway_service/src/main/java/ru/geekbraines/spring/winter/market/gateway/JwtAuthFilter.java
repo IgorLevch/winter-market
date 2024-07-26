@@ -4,13 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ReactiveHttpOutputMessage;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
 import io.jsonwebtoken.Claims;
-import ru.geekbraines.spring.winter.JwtUtil;
+import reactor.core.publisher.Mono;
 
+@Component
 public class JwtAuthFilter  extends AbstractGatewayFilterFactory<JwtAuthFilter.Config> { // это нужно , чтобы в ЯМл файле прописывать имя класса (в разделе filters)
 
 // когда запрос будет пролетать через Гейтвей - наша задача преобразовать его к заголовку Юзернейм и роли. 
@@ -53,7 +56,7 @@ public GatewayFilter apply(Config config){
 
         ServerHttpResponse response = (ServerHttpResponse) exchange.getResponse();
         response.setStatusCode(httpStatus);
-        return response.setComplete();
+        return ((ReactiveHttpOutputMessage) response).setComplete();
 
     }
 

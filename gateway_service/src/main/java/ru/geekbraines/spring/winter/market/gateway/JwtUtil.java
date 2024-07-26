@@ -1,4 +1,4 @@
-package ru.geekbraines.spring.winter;
+package ru.geekbraines.spring.winter.market.gateway;
 
 import java.util.Date;
 
@@ -29,7 +29,7 @@ public class JwtUtil {
     }
 
 
-    private boolean isInvalid(String token){
+    public boolean isInvalid(String token){
         return this.isTokenExpired(token);
         // проверяем, что токен валидный
     }
