@@ -54,6 +54,7 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 			<dependency>
 		 <groupId>ru.geekbrains.winter</groupId>
     <artifactId>api</artifactId>

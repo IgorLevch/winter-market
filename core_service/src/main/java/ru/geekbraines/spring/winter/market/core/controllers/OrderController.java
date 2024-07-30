@@ -16,7 +16,7 @@ import ru.geekbraines.spring.winter.market.core.services.OrderService;
 @RestController
 @RequestMapping("/api/v1/orders")
 @RequiredArgsConstructor
-//@CrossOrigin("*")  т.к. за это теперь отвечает Гейтвей -- комментим 
+@CrossOrigin("*")  //т.к. за это теперь отвечает Гейтвей -- комментим 
 public class OrderController {
   
     private final OrderService orderService;
