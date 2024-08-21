@@ -1,5 +1,7 @@
 package ru.geekbraines.spring.winter.market.carts.model;
 
+import java.math.BigDecimal;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,8 +17,8 @@ public class CartItem {
     private Long productId;
     private String productTitle;
     private int quantity;
-    private int pricePerProduct;
-    private int price;     // общая стоимость 
+    private BigDecimal pricePerProduct;
+    private BigDecimal price;     // общая стоимость 
 
 
 }

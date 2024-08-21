@@ -4,12 +4,12 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import lombok.NoArgsConstructor;
+
 import lombok.RequiredArgsConstructor;
 import ru.geekbraines.spring.winter.market.api.CartDto;
 
 import ru.geekbraines.spring.winter.market.carts.model.Cart;
-import ru.geekbraines.spring.winter.market.carts.converters.CartItemConverter;
+
 
 @Component
 @RequiredArgsConstructor

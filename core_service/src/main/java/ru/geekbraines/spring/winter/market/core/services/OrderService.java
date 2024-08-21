@@ -1,6 +1,6 @@
 package ru.geekbraines.spring.winter.market.core.services;
 
-import java.util.List;
+
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -9,13 +9,14 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import ru.geekbraines.spring.winter.market.api.CartDto;
-import ru.geekbraines.spring.winter.market.api.ResourceNotFoundException;
+
 
 import ru.geekbraines.spring.winter.market.core.entities.Order;
 import ru.geekbraines.spring.winter.market.core.entities.OrderItem;
 import ru.geekbraines.spring.winter.market.core.integrations.CartServiceIntegration;
-import ru.geekbraines.spring.winter.market.core.repositories.OrderItemRepository;
+
 import ru.geekbraines.spring.winter.market.core.repositories.OrderRepository;
+import ru.geekbraines.spring.winter.market.core.services.ProductService;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +29,7 @@ public class OrderService {
 
    
     @Transactional
-    public void createOrder(String username){
+    public Order createOrder(String username){
 
    
     CartDto cartDto = cartServiceIntegration.getCurrentCart();// получаем корзину из Карт МС
@@ -50,6 +51,7 @@ public class OrderService {
 
     orderRepository.save(order);
          cartServiceIntegration.clear();
+         return order;
                                
     // List<OrderItem> orderItems = cart.getItems().stream()
     //             .map(cartItem -> {

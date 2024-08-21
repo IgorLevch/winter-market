@@ -7,7 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import jakarta.persistence.*;
 import lombok.Data;
 
-
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
@@ -23,7 +23,7 @@ public class Product {
     }
     
 
-    public Product(Long id, String title, int price) {
+    public Product(Long id, String title, BigDecimal price) {
         this.id = id;
         this.title = title;
         this.price = price;
@@ -39,7 +39,7 @@ public class Product {
     private String title;
 
     @Column(name="price")
-    private int price;
+    private BigDecimal price;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

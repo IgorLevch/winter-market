@@ -3,29 +3,30 @@ package ru.geekbraines.spring.winter.market.core.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import ru.geekbraines.spring.winter.market.api.AppError;
+
 import ru.geekbraines.spring.winter.market.api.ProductDto;
 import ru.geekbraines.spring.winter.market.api.ResourceNotFoundException;
 import ru.geekbraines.spring.winter.market.core.converters.ProductConverter;
 import ru.geekbraines.spring.winter.market.core.entities.Product;
 import ru.geekbraines.spring.winter.market.core.services.ProductService;
 
+
 import java.util.List;
-import java.util.Optional;
+
 import java.util.stream.Collectors;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
+
+
 
 
 @RestController
@@ -44,6 +45,19 @@ public class ProductController {
         return productService.findAll().stream().map(productConverter::entityToDto)
         .collect(Collectors.toList());
     }
+
+
+    // @GetMapping("/filterPrice/{min}, {max}")
+    // public List<ProductDto> filterPrice(@PathVariable BigDecimal min, @PathVariable BigDecimal max){
+    //     return productService.filterPrice(min, max).stream().map(productConverter::entityToDto).collect(Collectors.toList());
+    // }
+
+    // @GetMapping("/filterName/{name}")
+    // public List<ProductDto> filterName(@PathVariable String name) {
+    //     return productService.filterName(name).stream().map(productConverter::entityToDto).collect(Collectors.toList());
+    // }
+    
+
 
 
     // // вариант ниже с ResponseEntity комментируем т.к. он достаточно громоздкий:

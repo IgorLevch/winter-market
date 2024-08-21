@@ -17,6 +17,7 @@
 		<module>front_service</module>
 		<module>gateway_service</module>
 		<module>auth_service</module>
+		
   </modules>
 
 	<properties>

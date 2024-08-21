@@ -1,6 +1,6 @@
 package ru.geekbraines.spring.winter.market.core.controllers;
 
-import org.springframework.boot.actuate.web.exchanges.HttpExchange.Principal;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;

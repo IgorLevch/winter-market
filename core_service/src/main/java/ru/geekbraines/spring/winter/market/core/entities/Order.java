@@ -1,5 +1,6 @@
 package ru.geekbraines.spring.winter.market.core.entities;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class Order {
     private String phone;
 
     @Column(name = "total_price")
-    private int totalPrice;
+    private BigDecimal totalPrice;
 
 
     @CreationTimestamp

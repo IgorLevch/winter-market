@@ -1,5 +1,6 @@
 package ru.geekbraines.spring.winter.market.api;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 public class CartDto {
 
     private List<CartItemDto> items;
-    private int totalPrice; // общая стоимость корзины
+    private BigDecimal totalPrice; // общая стоимость корзины
     
     
     public List<CartItemDto> getItems() {
@@ -21,10 +22,10 @@ public class CartDto {
     public void setItems(List<CartItemDto> items) {
         this.items = items;
     }
-    public int getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 
